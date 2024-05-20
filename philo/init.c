@@ -6,7 +6,7 @@
 /*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:34:14 by omghazi           #+#    #+#             */
-/*   Updated: 2024/05/10 11:13:57 by omghazi          ###   ########.fr       */
+/*   Updated: 2024/05/19 18:21:20 by omghazi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ t_philo	*philos_data_init(char **av)
 	int		i;
 
 	philos_num = ft_atoi(av[1]);
-	philos = malloc(sizeof(t_philo) * philos_num);
+	philos = (t_philo *)malloc(sizeof(t_philo) * philos_num);
 	if (!philos)
 		return (printf("error with malloc"), NULL);
-	philos->thread_id = malloc(sizeof(pthread_t) * philos_num);
+	philos->thread_id = (pthread_t *)malloc(sizeof(pthread_t) * philos_num);
 	if (!philos->thread_id)
 		return (free(philos), philos = NULL, NULL);
 	i = -1;
@@ -72,11 +72,11 @@ t_prog	*life_cycle_init(t_philo *philo)
 	t_prog	*init;
 	int		i;
 
-	init = malloc(sizeof(t_prog));
+	init = (t_prog *)malloc(sizeof(t_prog));
 	if (!init)
 		return (printf("error with malloc\n"), NULL);
 	init->philos = philo;
-	init->forks = malloc(sizeof(pthread_mutex_t) * \
+	init->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * \
 			init->philos->num_of_philos);
 	if (!init->forks)
 		return (free(init), init = NULL, printf("error with malloc\n"), NULL);

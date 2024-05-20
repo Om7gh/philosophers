@@ -6,7 +6,7 @@
 /*   By: omghazi <omghazi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 16:47:12 by omghazi           #+#    #+#             */
-/*   Updated: 2024/05/16 00:12:51 by omghazi          ###   ########.fr       */
+/*   Updated: 2024/05/19 18:31:50 by omghazi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	create_philos(t_philo **philo, t_table *table)
 	int	i;
 
 	i = -1;
-	*philo = malloc(sizeof(t_philo) * table->philos_nbr);
+	*philo = (t_philo *)malloc(sizeof(t_philo) * table->philos_nbr);
 	if (!(*philo))
 		return (printf("%serror with malloc%s\n", RED, NC), 0);
 	while (++i < table->philos_nbr)
